@@ -1,7 +1,7 @@
 {
   "name": "hermes-manuscript-studio",
   "version": "0.1.0",
-  "main": "electron-main.cjs",
+  "main": "dist-electron/main.cjs",
   "private": true,
   "description": "Hermes AI Manuscript Intelligence Studio — Electron desktop app",
   "author": "Sheldon",
