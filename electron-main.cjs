@@ -1,8 +1,9 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
-// Load bundled main process: registers services and IPC handlers only
-require(path.join(__dirname, 'dist-electron', 'main-bundle.cjs'));
+// Load the main bundle from vite-plugin-electron when using the Vite pipeline.
+const mainBundle = path.join(__dirname, 'dist-electron', 'main.js');
+require(mainBundle);
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
