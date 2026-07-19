@@ -15,7 +15,7 @@ function createWindow() {
     },
   });
 
-  const htmlPath = path.join(__dirname, 'dist', 'renderer', 'index.html');
+  const htmlPath = path.join(__dirname, 'dist', 'renderer', 'src', 'main', 'renderer', 'index.html');
   mainWindow.loadFile(htmlPath).catch((err) => {
     console.error('[hms] Failed to load HTML:', err);
   });
