@@ -6,8 +6,8 @@ import type { ProjectService } from './ProjectService';
 export class BackupService {
   constructor(private project: ProjectService) {}
 
-  list(projectId: string) {
-    const p = this.project.openProject(projectId);
+  async list(projectId: string) {
+    const p = await this.project.openProject(projectId);
     if (!p) return [];
     const backupsDir = path.join(p.path, 'backups');
     if (!fs.existsSync(backupsDir)) return [];
@@ -17,7 +17,7 @@ export class BackupService {
   }
 
   async create(projectId: string, label = 'auto') {
-    const p = this.project.openProject(projectId);
+    const p = await this.project.openProject(projectId);
     if (!p) throw new Error('Project not found');
     const zip = new AdmZip();
     const rels = {
@@ -36,8 +36,8 @@ export class BackupService {
     return { id: outName, createdAt: Date.now() };
   }
 
-  restore(projectId: string, backupId: string) {
-    const p = this.project.openProject(projectId);
+  async restore(projectId: string, backupId: string) {
+    const p = await this.project.openProject(projectId);
     if (!p) throw new Error('Project not found');
     const zipPath = path.join(p.path, 'backups', backupId);
     if (!fs.existsSync(zipPath)) throw new Error('Backup not found');

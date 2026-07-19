@@ -6,40 +6,38 @@ import { Document } from '../../../shared/types';
 export class DocumentService {
   constructor(private project: ProjectService) {}
 
-  save({ projectId, manuscriptId, title, content }: { projectId: string; manuscriptId?: string; title: string; content: string }) {
-    const p = this.project.openProject(projectId);
+  async save({ projectId, manuscriptId, title, content }: { projectId: string; manuscriptId?: string; title: string; content: string }) {
+    const p = await this.project.openProject(projectId);
     if (!p) throw new Error('Project not found');
     const id = manuscriptId ?? 'current';
-    const full = path.join(p.path, 'manuscript', `${id}.md`);
-    fs.writeFileSync(full, content, 'utf-8');
-    const wordCount = content.split(/\s+/).filter(Boolean).length;
-    this.project.getDb().prepare(`
-      INSERT INTO documents (id,project_id,title,content,word_count,format,modified_at)
-      VALUES (@id,@projectId,@title,@content,@wordCount,'markdown',@modifiedAt)
-      ON CONFLICT(id) DO UPDATE SET title=@title, content=@content, word_count=@wordCount, modified_at=@modifiedAt
-    `).run({
-      id,
-      projectId,
-      title,
-      content,
-      wordCount,
-      modifiedAt: Date.now(),
-    });
+    const md = path.join(p.path, 'manuscript', `${id}.md`);
+    fs.writeFileSync(md, content, 'utf-8');
+    const meta = path.join(p.path, 'manuscript', `${id}.meta.json`);
+    fs.writeFileSync(meta, JSON.stringify({ id, title, projectId, updatedAt: Date.now() }, null, 2), 'utf-8');
     return id;
   }
 
-  load(manuscriptId: string): Document | null {
-    const doc = this.project.getDb().prepare('SELECT * FROM documents WHERE id = ?').get(manuscriptId) as any;
-    if (doc) return doc;
-    return null;
+  async load({ projectId, manuscriptId }: { projectId: string; manuscriptId: string }): Promise<Document | null> {
+    const p = await this.project.openProject(projectId);
+    if (!p) return null;
+    const full = path.join(p.path, 'manuscript', `${manuscriptId}.md`);
+    if (!fs.existsSync(full)) return null;
+    const content = fs.readFileSync(full, 'utf-8');
+    return {
+      id: manuscriptId,
+      project_id: projectId,
+      title: '',
+      content,
+      word_count: content.split(/\s+/).filter(Boolean).length,
+      format: 'markdown',
+      modified_at: Date.now(),
+    } as any;
   }
 
   async import({ absolutePath, projectId }: { absolutePath: string; projectId: string }) {
-    const p = this.project.openProject(projectId);
-    if (!p) throw new Error('Project not found');
     const content = fs.readFileSync(absolutePath, 'utf-8');
     const title = path.basename(absolutePath, path.extname(absolutePath));
-    const id = title.replace(/[^a-zA-Z0-9_-]+/gi, '_').toLowerCase();
-    return this.save({ projectId, manuscriptId: id, title, content });
+    const safeTitle = title.replace(/[^a-zA-Z0-9_.-]+/gi, '') || 'import';
+    return this.save({ projectId, manuscriptId: safeTitle, title, content });
   }
 }

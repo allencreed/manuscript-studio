@@ -13,35 +13,45 @@ export const useProjectStore = create<ProjectStore>(set => ({
   projects: [],
   activeProject: null,
   loadProjects: async () => {
-    if (!window.hms) return;
-    const projects = await window.hms.projects.list();
-    set({ projects });
+    try {
+      if (!window.hms) throw new Error('hms bridge missing');
+      const projects = await window.hms.projects.list();
+      set({ projects: Array.isArray(projects) ? projects : [] });
+    } catch (error) {
+      console.error('loadProjects failed', error);
+      set({ projects: [] });
+    }
   },
   createProject: async (name: string) => {
-    if (!window.hms) {
-      alert('hms bridge missing'); 
-      return;
-    }
     try {
+      if (!window.hms) throw new Error('hms bridge missing');
       const project = await window.hms.projects.create({ name });
       const list = await window.hms.projects.list();
-      set({ projects: list, activeProject: project });
+      set({ projects: Array.isArray(list) ? list : [], activeProject: project });
     } catch (error) {
       console.error('createProject failed', error);
-      alert('Failed to create project: ' + (error instanceof Error ? error.message : String(error)));
+      throw error;
     }
   },
   openProject: async (id: string) => {
-    if (!window.hms) return;
-    const project = await window.hms.projects.open(id);
-    if (project) set({ activeProject: project });
+    try {
+      if (!window.hms) throw new Error('hms bridge missing');
+      const project = await window.hms.projects.open(id);
+      if (project) set({ activeProject: project });
+    } catch (error) {
+      console.error('openProject failed', error);
+    }
   },
   deleteProject: async (id: string) => {
-    if (!window.hms) return;
-    await window.hms.projects.delete(id);
-    set(state => ({
-      projects: state.projects.filter(p => p.id !== id),
-      activeProject: state.activeProject?.id === id ? null : state.activeProject,
-    }));
+    try {
+      if (!window.hms) throw new Error('hms bridge missing');
+      await window.hms.projects.delete(id);
+      set(state => ({
+        projects: state.projects.filter(p => p.id !== id),
+        activeProject: state.activeProject?.id === id ? null : state.activeProject,
+      }));
+    } catch (error) {
+      console.error('deleteProject failed', error);
+    }
   },
 }));

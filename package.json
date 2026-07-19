@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "adm-zip": "^0.6.0",
-    "better-sqlite3": "^11.9.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "sql.js": "^1.14.1",
     "sqlite-vec": "^0.1.6-alpha.4",
     "uuid": "^11.1.0",
     "zustand": "^5.0.3"
@@ -38,6 +38,7 @@
     "concurrently": "^9.1.2",
     "electron": "^33.3.1",
     "electron-builder": "^25.1.8",
+    "electron-rebuild": "^3.2.9",
     "electron-vite": "^5.0.0",
     "esbuild": "^0.28.1",
     "eslint": "^9.25.0",

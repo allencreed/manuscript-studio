@@ -2,3 +2,4 @@ allowBuilds:
   better-sqlite3: true
   electron: true
   esbuild: true
+  lzma-native: set this to true or false
