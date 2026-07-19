@@ -1,4 +1,4 @@
-const { app, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
@@ -12,6 +12,25 @@ if (!fs.existsSync(projectsDir)) {
 
 let window = null;
 
+function rendererHtmlPath() {
+  const root = path.join(__dirname, '..', 'dist', 'renderer');
+  const candidates = [
+    path.join(root, 'index.html'),
+    path.join(root, 'src', 'main', 'renderer', 'index.html'),
+  ];
+  const found = candidates.find((p) => {
+    try {
+      return fs.existsSync(p);
+    } catch {
+      return false;
+    }
+  });
+  if (!found) {
+    console.error('[hms] Missing renderer HTML in dist/renderer. Run pnpm build first.');
+  }
+  return found || candidates[0];
+}
+
 function createWindow() {
   window = new BrowserWindow({
     width: 1280,
@@ -23,15 +42,10 @@ function createWindow() {
     },
   });
 
-  // Use dev server when available, fallback to built files
-  const devUrl = 'http://localhost:5173';
-  if (process.env.NODE_ENV === 'development') {
-    window.loadURL(devUrl).catch(() => {
-      window.loadFile(path.join(__dirname, 'dist', 'renderer', 'index.html')).catch(console.error);
-    });
-  } else {
-    window.loadFile(path.join(__dirname, 'dist', 'renderer', 'index.html')).catch(console.error);
-  }
+  const htmlPath = rendererHtmlPath();
+  window.loadFile(htmlPath).catch((err) => {
+    console.error('[hms] Failed to load HTML:', err);
+  });
 }
 
 app.whenReady().then(() => {

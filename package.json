@@ -6,7 +6,7 @@
   "description": "Hermes AI Manuscript Intelligence Studio — Electron desktop app",
   "author": "Sheldon",
   "license": "MIT",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

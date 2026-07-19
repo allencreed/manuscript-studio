@@ -1,25 +1,22 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import electron from 'vite-plugin-electron'
-import renderer from 'vite-plugin-electron-renderer'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [
-    react(),
-    electron([
-      {
-        entry: 'src/main/electron/main.ts',
-      },
-    ]),
-    renderer(),
-  ],
+  root: 'src/main/renderer',
+  plugins: [react()],
   clearScreen: false,
+  server: {
+    host: '127.0.0.1',
+    port: 5173,
+    strictPort: true,
+    cors: {
+      origin: '*',
+    },
+  },
   base: './',
   build: {
-    rollupOptions: {
-      input: 'src/main/renderer/index.html',
-    },
     outDir: path.resolve(__dirname, 'dist/renderer'),
+    emptyOutDir: true,
   },
 })
