@@ -1,0 +1,44 @@
+/// <reference types="vite/client" />
+
+export interface HMS {
+  readonly projects: {
+    readonly list: () => Promise<unknown[]>;
+    readonly create: (p: { name: string }) => Promise<unknown>;
+    readonly open: (id: string) => Promise<unknown>;
+    readonly delete: (id: string) => Promise<void>;
+  };
+  readonly documents: {
+    readonly save: (p: { projectId: string; manuscriptId?: string; title: string; content: string }) => Promise<string>;
+    readonly load: (id: string) => Promise<unknown>;
+    readonly import: (p: { absolutePath: string; projectId: string }) => Promise<{ id: string; title: string; content: string }>;
+  };
+  readonly versions: {
+    readonly list: (manuscriptId: string) => Promise<unknown[]>;
+    readonly save: (p: { manuscriptId: string; content: string; version_type?: string; label?: string }) => Promise<string>;
+    readonly restore: (versionId: string) => Promise<unknown>;
+  };
+  readonly backups: {
+    readonly list: (projectId: string) => Promise<unknown[]>;
+    readonly restore: (projectId: string, backupId: string) => Promise<void>;
+  };
+  readonly ai: {
+    readonly chat: (p: { prompt: string }) => Promise<{ reply: string }>;
+    readonly suggest: (p: { manuscriptId: string }) => Promise<{ text: string }>;
+  };
+  readonly model: {
+    readonly status: () => Promise<{ running: boolean; models: string[] }>;
+  };
+  readonly settings: {
+    readonly get: () => Promise<UserSettings>;
+    readonly set: (p: Partial<UserSettings>) => Promise<UserSettings>;
+  };
+}
+
+declare global {
+  interface Window {
+    readonly hms?: HMS;
+  }
+}
+
+import { UserSettings } from '../../shared/types';
+export { UserSettings };

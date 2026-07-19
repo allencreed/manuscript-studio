@@ -1,0 +1,2064 @@
+**Version:** 1.0
+**Document Type:** Product Blueprint / Development Specification
+**Platform:** Desktop Application (Electron)
+**Primary Stack:** Electron + React + TypeScript 7.0
+**AI Architecture:** Hermes Agent Orchestration System
+
+---
+
+# PART 1 — EXECUTIVE VISION & PRODUCT REQUIREMENTS
+
+---
+
+# 1. Executive Summary
+
+## Product Name
+
+**Hermes**
+
+## Product Category
+
+AI Manuscript Intelligence Studio
+
+---
+
+## Vision Statement
+
+Hermes is an AI-powered desktop writing environment designed to transform traditional manuscripts into intelligent, interactive creative systems.
+
+Unlike traditional writing software that only stores text, Hermes understands:
+
+* characters
+* scenes
+* relationships
+* timelines
+* themes
+* revisions
+* author preferences
+
+Hermes acts as an intelligent creative partner that helps authors write, edit, organize, analyze, and prepare manuscripts for publishing.
+
+---
+
+# 2. The Problem Hermes Solves
+
+Modern authors struggle with:
+
+## Manuscript Complexity
+
+Large manuscripts contain thousands of interconnected elements:
+
+* characters
+* events
+* locations
+* motivations
+* themes
+* narrative arcs
+
+Traditional editors and word processors treat these as disconnected text.
+
+---
+
+## Revision Challenges
+
+Authors often lose track of:
+
+* why changes were made
+* previous versions
+* character consistency
+* timeline errors
+* repeated ideas
+
+---
+
+## AI Limitations
+
+Most AI writing tools:
+
+* only see the current prompt
+* lack manuscript memory
+* do not understand story structure
+* do not preserve author ownership
+
+---
+
+# 3. Hermes Solution
+
+Hermes creates a manuscript intelligence layer.
+
+Instead of:
+
+```
+Document
+ |
+ |
+Text
+```
+
+Hermes creates:
+
+```
+                Manuscript
+
+                     |
+
+          Intelligence Layer
+
+                     |
+
+ ??????????????????????????????????
+
+Characters Scenes Timeline Themes
+
+                     |
+
+              Hermes Agent
+```
+
+---
+
+# 4. Target Users
+
+## Primary Users
+
+### Authors
+
+Needs:
+
+* writing assistance
+* revision help
+* organization
+* creative feedback
+
+---
+
+### Editors
+
+Needs:
+
+* manuscript analysis
+* revision tracking
+* collaboration
+* consistency checking
+
+---
+
+### Publishers
+
+Needs:
+
+* review workflows
+* manuscript preparation
+* production management
+
+---
+
+# 5. Core Product Principles
+
+---
+
+# Principle 1: Local First
+
+Hermes protects creative ownership.
+
+Default:
+
+* local storage
+* local AI processing
+* encrypted projects
+
+Cloud services are optional.
+
+---
+
+# Principle 2: Author Control
+
+Hermes assists the author.
+
+Hermes does not:
+
+* replace creativity
+* overwrite writing automatically
+* force AI suggestions
+
+The author remains the final decision maker.
+
+---
+
+# Principle 3: Progressive Complexity
+
+Hermes serves both beginners and professionals.
+
+Default:
+
+Simple.
+
+Advanced:
+
+Available through settings.
+
+Example:
+
+```
+Basic Author
+
+        ?
+
+Advanced Writer
+
+        ?
+
+Professional Editor
+
+        ?
+
+Publisher
+```
+
+---
+
+# 6. Core User Journey
+
+## First Launch Experience
+
+User installs Hermes.
+
+Process:
+
+```
+Install Application
+
+        ?
+
+Initialize Hermes Runtime
+
+        ?
+
+Create Local Workspace
+
+        ?
+
+Import Manuscript
+
+        ?
+
+Build Intelligence Index
+
+        ?
+
+Begin Writing
+```
+
+---
+
+# 7. Project Management System
+
+Hermes uses a multi-project workspace.
+
+Default:
+
+Projects remain isolated.
+
+Example:
+
+```
+Author Workspace
+
+
+??? Fantasy Novel
+
+??? Business Book
+
+??? Memoir
+
+??? Screenplay
+```
+
+---
+
+# Optional Author Intelligence
+
+Settings:
+
+```
+Author Intelligence
+
+? Share Writing Preferences
+
+? Learn Across Projects
+
+? Compare Writing Patterns
+```
+
+---
+
+# 8. Manuscript Project Structure
+
+Every Hermes project contains:
+
+```
+Hermes Project
+
+
+??? Original Manuscript
+
+??? Master Updated Version
+
+??? Version History
+
+??? Knowledge Graph
+
+??? Vector Intelligence Index
+
+??? AI Memory
+
+??? Notes
+
+??? Research
+
+??? Backup Archive
+```
+
+---
+
+# 9. Manuscript Import System
+
+Hybrid import model.
+
+Supported:
+
+```
+DOCX
+PDF
+TXT
+Markdown
+RTF
+```
+
+---
+
+## Import Modes
+
+### Basic Import
+
+Preserves:
+
+* text
+* formatting
+* structure
+
+---
+
+### Smart Import
+
+Optional:
+
+Hermes analyzes:
+
+* chapters
+* scenes
+* characters
+* themes
+
+---
+
+### Full Intelligence Import
+
+Creates:
+
+* knowledge graph
+* character profiles
+* timeline
+* semantic index
+
+---
+
+# 10. Document Editing Experience
+
+Hybrid editor model.
+
+---
+
+## Default:
+
+# Author Studio Mode
+
+Features:
+
+* manuscript writing
+* AI assistance
+* story intelligence
+* chapter navigation
+
+---
+
+## Optional Modes
+
+### Classic Manuscript View
+
+For:
+
+* editors
+* publishers
+* submission formatting
+
+---
+
+### Focus Mode
+
+For:
+
+* distraction-free writing
+
+---
+
+### Publishing Preview
+
+For:
+
+* final output review
+
+---
+
+# 11. Hermes AI Assistant
+
+The chatbot is the primary interaction layer.
+
+Example:
+
+Author:
+
+> "Make this chapter more suspenseful."
+
+Hermes:
+
+1. Reads chapter context
+2. Checks character motivations
+3. Reviews pacing
+4. Suggests revisions
+5. Explains reasoning
+
+---
+
+# 12. AI Editing Capabilities
+
+Initial capabilities:
+
+## Writing Improvements
+
+* clarity
+* pacing
+* tone
+* descriptions
+* dialogue
+
+---
+
+## Structural Analysis
+
+* character consistency
+* scene purpose
+* conflict analysis
+
+---
+
+## Revision Assistance
+
+* compare versions
+* explain changes
+* restore previous drafts
+
+---
+
+# 13. Backup System
+
+Default:
+
+Every 10 minutes.
+
+Settings:
+
+```
+Backup Settings
+
+
+Frequency:
+
+10 minutes
+
+
+Options:
+
+? 5 minutes
+
+? 10 minutes
+
+? 30 minutes
+
+? Custom
+```
+
+---
+
+# 14. Version Management
+
+Hermes preserves:
+
+```
+Original Draft
+
+        ?
+
+AI Revision
+
+        ?
+
+Author Revision
+
+        ?
+
+Final Version
+```
+
+Every change is traceable.
+
+---
+
+# 15. User Roles
+
+Hermes supports:
+
+## Author
+
+Full control.
+
+## Editor
+
+Review and suggestions.
+
+## Publisher
+
+Production access.
+
+---
+
+# 16. MVP Product Definition
+
+## Hermes Version 1 Goal:
+
+> Create the first AI manuscript intelligence workspace.
+
+---
+
+MVP Includes:
+
+```
+? Electron Desktop Application
+
+? React Interface
+
+? TypeScript 7
+
+? Project System
+
+? Manuscript Import
+
+? AI Chat Assistant
+
+? Local Hermes Agent
+
+? Backup System
+
+? Version History
+
+? Basic Knowledge Graph
+
+? Settings Framework
+
+? Local AI Support
+```
+
+---
+
+MVP Excludes:
+
+```
+? Marketplace
+
+? Enterprise
+
+? Full Collaboration
+
+? Advanced Publishing
+
+? Plugin Ecosystem
+```
+
+---
+
+# 17. Long-Term Product Vision
+
+Hermes evolves into:
+
+```
+AI Writing Assistant
+
+        ?
+
+AI Manuscript Editor
+
+        ?
+
+AI Publishing Studio
+
+        ?
+
+AI Creative Operating System
+```
+
+---
+
+# END OF PART 1
+
+Next section:
+
+# PART 2 — TECHNICAL ARCHITECTURE
+
+This will define:
+
+* Electron architecture
+* React structure
+* Hermes Agent architecture
+* IPC communication
+* Local runtime
+* AI model management
+* security boundaries
+* service architecture
+
+I will proceed with Part 2 next.
+
+
+
+
+# Hermes AI Manuscript Intelligence Studio
+
+# PART 2 — TECHNICAL ARCHITECTURE SPECIFICATION
+
+**Purpose:** Define the engineering architecture required to build Hermes as a scalable AI desktop platform.
+
+---
+
+# 18. High-Level System Architecture
+
+Hermes follows a **Hybrid Local-First AI Architecture**.
+
+The application is separated into distinct layers:
+
+```text
+ id="7x9m4p"
+
+                  HERMES DESKTOP APPLICATION
+
+
+                         ELECTRON
+
+
+                            |
+
+                            |
+
+
+                    REACT FRONTEND
+
+
+                            |
+
+                    Secure IPC Layer
+
+
+                            |
+
+                            ?
+
+
+                HERMES ORCHESTRATOR SERVICE
+
+
+                            |
+
+        ?????????????????????????????????????????
+
+
+        ?                   ?                   ?
+
+
+  AI MODEL MANAGER   KNOWLEDGE ENGINE   TOOL SYSTEM
+
+
+        ?                   ?                   ?
+
+
+ Local Models       Graph Database       File System
+
+ Cloud Models       Vector Database      Integrations
+
+```
+
+---
+
+# 19. Core Technology Stack
+
+## Desktop Framework
+
+### Electron
+
+Responsibilities:
+
+* application lifecycle
+* desktop windows
+* filesystem access
+* background processes
+* native OS integration
+
+---
+
+## Frontend
+
+### React
+
+Responsibilities:
+
+* user interface
+* editor experience
+* dashboards
+* settings
+* visualization
+
+---
+
+## Language
+
+### TypeScript 7.0
+
+Used throughout:
+
+* frontend
+* services
+* shared interfaces
+* tooling
+
+Goal:
+
+Strong typing across the entire platform.
+
+---
+
+# 20. Electron Architecture
+
+Hermes uses a multi-process Electron design.
+
+---
+
+# Main Process
+
+Responsible for:
+
+```text id="1v5q3m"
+Electron Main
+
+
+? Window Management
+
+? Application Startup
+
+? File Permissions
+
+? System Events
+
+? Background Services
+
+? Updates
+
+? Security
+```
+
+---
+
+# Renderer Process
+
+React application.
+
+Responsible for:
+
+```text id="6n3q9w"
+Renderer
+
+
+? Editor UI
+
+? Chat Interface
+
+? Settings
+
+? Story Maps
+
+? Dashboards
+
+? User Interaction
+```
+
+---
+
+# Hermes Service Layer
+
+Runs independently.
+
+Responsible for:
+
+```text id="9m4x7p"
+Hermes Runtime
+
+
+? AI Orchestration
+
+? Manuscript Processing
+
+? Knowledge Graph
+
+? Model Routing
+
+? Memory Management
+
+? Tool Execution
+```
+
+---
+
+# 21. Communication Architecture
+
+The frontend never directly controls AI models.
+
+Communication flow:
+
+```text id="2p7k8m"
+
+React UI
+
+
+   |
+
+   |
+
+Secure IPC
+
+
+   |
+
+   |
+
+Hermes Runtime
+
+
+   |
+
+   |
+
+AI Models / Tools
+
+```
+
+---
+
+# IPC Communication Examples
+
+## User Request
+
+Author:
+
+> "Analyze this chapter."
+
+Flow:
+
+```text id="4q8n2s"
+
+React Chat Panel
+
+        |
+
+        ?
+
+IPC Message
+
+        |
+
+        ?
+
+Hermes Agent
+
+        |
+
+        ?
+
+Analysis Tools
+
+        |
+
+        ?
+
+Response
+
+        |
+
+        ?
+
+React UI
+```
+
+---
+
+# 22. Hermes Orchestrator Architecture
+
+The Hermes Orchestrator is the brain manager.
+
+It does not replace AI models.
+
+It coordinates them.
+
+---
+
+Architecture:
+
+```text id="8m5q1x"
+
+                HERMES ORCHESTRATOR
+
+
+                         |
+
+        ???????????????????????????????????
+
+
+        ?                ?                ?
+
+
+Context Manager   Tool Manager   Model Router
+
+
+        ?                ?                ?
+
+
+Memory System    Available Tools  AI Providers
+```
+
+---
+
+# 23. Context Management System
+
+Hermes manages:
+
+* manuscript context
+* conversation history
+* user preferences
+* project knowledge
+* active chapter
+* relevant characters
+
+Example:
+
+User:
+
+> "Improve Sarah's reaction."
+
+Hermes gathers:
+
+```text id="5v8p3n"
+
+Active Scene
+
++
+
+Sarah Character Profile
+
++
+
+Previous Events
+
++
+
+Emotional Arc
+
++
+
+Author Style
+
+```
+
+Then sends context to the AI model.
+
+---
+
+# 24. Tool Execution Framework
+
+Hermes uses tools instead of giving AI unlimited access.
+
+Example tools:
+
+```text id="1m8q7z"
+Hermes Tools
+
+
+Manuscript Tool
+
+Character Tool
+
+Timeline Tool
+
+Search Tool
+
+Version Tool
+
+Backup Tool
+
+Export Tool
+
+Database Tool
+```
+
+---
+
+# Tool Permission Model
+
+Example:
+
+```text id="3x7m9p"
+
+AI Request:
+
+
+"Analyze character consistency"
+
+
+Allowed Tools:
+
+
+? Character Database
+
+? Manuscript Search
+
+
+Restricted:
+
+
+? Delete Files
+
+? Modify Settings
+
+```
+
+---
+
+# 25. AI Model Management
+
+Hermes supports:
+
+## Local AI Models
+
+Default.
+
+Examples:
+
+* Ollama models
+* custom local models
+* future embedded models
+
+---
+
+## Cloud Models
+
+Optional.
+
+Examples:
+
+* OpenAI
+* Anthropic
+* Gemini
+* custom endpoints
+
+---
+
+Architecture:
+
+```text id="8q4m6v"
+
+               MODEL MANAGER
+
+
+                     |
+
+
+        ???????????????????????????
+
+
+        ?            ?            ?
+
+
+     Local        Cloud       Custom
+
+
+     Models       APIs        Models
+
+```
+
+---
+
+# 26. Model Routing System
+
+Hermes chooses the best model based on task.
+
+Example:
+
+Simple:
+
+> "Fix grammar."
+
+Uses:
+
+Fast local model.
+
+---
+
+Complex:
+
+> "Analyze character arc across 300 pages."
+
+Uses:
+
+Higher reasoning model.
+
+---
+
+Architecture:
+
+```text id="9z2m4k"
+
+Request
+
+  ?
+
+Task Classifier
+
+  ?
+
+Model Router
+
+  ?
+
+Best Available Model
+
+```
+
+---
+
+# 27. Background Services
+
+Hermes runs background processes:
+
+```text id="5x8n3q"
+
+Hermes Runtime Services
+
+
+??? AI Service
+
+??? Backup Service
+
+??? File Watcher
+
+??? Index Builder
+
+??? Sync Manager
+
+??? Update Manager
+
+??? Security Service
+
+```
+
+---
+
+# 28. File Monitoring System
+
+Purpose:
+
+Detect manuscript changes.
+
+Example:
+
+Author edits:
+
+```text
+Chapter5.docx
+```
+
+Hermes detects:
+
+```text id="2m7q9v"
+
+File Changed
+
+
+?
+
+Create Backup
+
+
+?
+
+Update Index
+
+
+?
+
+Update Knowledge Graph
+
+
+?
+
+Notify AI Memory
+
+```
+
+---
+
+# 29. Update Architecture
+
+Separate updates:
+
+## Application Updates
+
+Electron:
+
+* UI
+* features
+* bug fixes
+
+---
+
+## Intelligence Updates
+
+Hermes:
+
+* models
+* agents
+* tools
+
+---
+
+Example:
+
+```text id="4v9m1x"
+
+Hermes Version
+
+2.1
+
+
++
+
+AI Engine
+
+4.5
+
+```
+
+---
+
+# 30. Future Multi-Agent Architecture
+
+Not enabled by default.
+
+Future:
+
+```text id="7p3x8m"
+
+              HERMES ORCHESTRATOR
+
+
+                       |
+
+
+       ?????????????????????????????????
+
+
+       ?               ?               ?
+
+
+ Writing Agent   Editing Agent   Research Agent
+
+
+       ?               ?               ?
+
+
+     Tools           Tools           Tools
+
+```
+
+---
+
+# 31. Technical Architecture Summary
+
+Locked architecture:
+
+```text id="9m5q2x"
+
+Desktop:
+
+Electron
+
+
+Frontend:
+
+React
+
+
+Language:
+
+TypeScript 7
+
+
+AI Brain:
+
+Hermes Orchestrator
+
+
+Communication:
+
+Secure IPC
+
+
+Storage:
+
+SQLite
+
++
+
+Graph Database
+
++
+
+Vector Database
+
+
+AI:
+
+Local First
+
+Cloud Optional
+
+
+Security:
+
+Encrypted Local Workspace
+
+```
+
+---
+
+# END OF PART 2
+
+Next section:
+
+# PART 3 — ELECTRON + REACT IMPLEMENTATION SPECIFICATION
+
+This will define:
+
+* folder structure
+* component architecture
+* UI modules
+* state management
+* routing
+* editor architecture
+* settings framework
+* reusable components
+
+Proceeding next.
+
+
+
+# Hermes AI Manuscript Intelligence Studio
+
+# PART 3 — ELECTRON + REACT IMPLEMENTATION SPECIFICATION
+
+**Purpose:** Define the frontend architecture, component structure, application organization, and implementation standards for the Hermes desktop application.
+
+---
+
+# 32. Frontend Architecture Overview
+
+Hermes uses a **feature-based React architecture**.
+
+The application should not be organized only by technical files. It should be organized around user capabilities.
+
+Example:
+
+```text
+Feature
+
+?
+
+Components
+
+?
+
+Services
+
+?
+
+State
+
+?
+
+Data Models
+```
+
+---
+
+# 33. Application Structure
+
+Recommended project structure:
+
+```text
+hermes/
+
+??? electron/
+?
+?   ??? main/
+?   ?   ??? main.ts
+?   ?   ??? windowManager.ts
+?   ?   ??? security.ts
+?   ?   ??? updater.ts
+?   ?
+?   ??? services/
+?   ?   ??? hermesRuntime.ts
+?   ?   ??? fileWatcher.ts
+?   ?   ??? backupService.ts
+?   ?   ??? modelManager.ts
+?   ?
+?   ??? ipc/
+?       ??? handlers.ts
+?       ??? channels.ts
+?
+
+
+??? src/
+?
+?   ??? app/
+?   ?   ??? App.tsx
+?   ?   ??? routes.tsx
+?   ?   ??? providers.tsx
+?   ?
+?   ??? features/
+?   ?
+?   ?   ??? manuscript/
+?   ?   ?
+?   ?   ??? hermesChat/
+?   ?   ?
+?   ?   ??? characters/
+?   ?   ?
+?   ?   ??? timeline/
+?   ?   ?
+?   ?   ??? storyGraph/
+?   ?   ?
+?   ?   ??? versions/
+?   ?   ?
+?   ?   ??? settings/
+?   ?
+?   ??? components/
+?   ?
+?   ??? hooks/
+?   ?
+?   ??? services/
+?   ?
+?   ??? store/
+?   ?
+?   ??? types/
+?   ?
+?   ??? utils/
+?
+??? package.json
+```
+
+---
+
+# 34. React Application Layers
+
+Hermes frontend has five layers:
+
+```text
+ id="4x8m2p"
+                REACT APPLICATION
+
+
+                       |
+
+                       ?
+
+
+              PRESENTATION LAYER
+
+
+                       |
+
+                       ?
+
+
+              FEATURE COMPONENTS
+
+
+                       |
+
+                       ?
+
+
+              STATE MANAGEMENT
+
+
+                       |
+
+                       ?
+
+
+              SERVICE CONNECTIONS
+
+
+                       |
+
+                       ?
+
+
+              ELECTRON IPC
+
+```
+
+---
+
+# 35. Main Application Layout
+
+The default Hermes workspace:
+
+```text
+ id="8m3q7v"
+
+???????????????????????????????????????????????
+? Hermes Toolbar                              ?
+???????????????????????????????????????????????
+?            ?                                ?
+? Project    ?                                ?
+? Explorer   ?       Manuscript Editor        ?
+?            ?                                ?
+? Chapters   ?                                ?
+? Characters ?                                ?
+? Timeline   ?                                ?
+?            ?                                ?
+???????????????????????????????????????????????
+? Hermes AI Assistant                         ?
+???????????????????????????????????????????????
+```
+
+---
+
+# 36. Core React Features
+
+---
+
+# Feature: Manuscript Editor
+
+Responsibilities:
+
+```text
+Manuscript Feature
+
+
+? Display chapters
+
+? Edit content
+
+? Track changes
+
+? Save revisions
+
+? Request AI assistance
+
+? Connect to Hermes context
+```
+
+---
+
+Components:
+
+```text
+manuscript/
+
+??? Editor.tsx
+
+??? ChapterList.tsx
+
+??? SceneNavigator.tsx
+
+??? RevisionPanel.tsx
+
+??? ManuscriptToolbar.tsx
+```
+
+---
+
+# Feature: Hermes Chat Assistant
+
+The primary AI interaction interface.
+
+Components:
+
+```text
+hermesChat/
+
+
+??? ChatWindow.tsx
+
+??? Message.tsx
+
+??? PromptBox.tsx
+
+??? ToolActivity.tsx
+
+??? ContextIndicator.tsx
+```
+
+---
+
+Example:
+
+```text
+Author:
+
+Improve this scene.
+
+
+Hermes:
+
+Analyzing:
+
+? Character motivation
+
+? Scene conflict
+
+? Previous chapter context
+
+
+Suggestion ready.
+```
+
+---
+
+# Feature: Character Intelligence
+
+Components:
+
+```text
+characters/
+
+
+??? CharacterList.tsx
+
+??? CharacterProfile.tsx
+
+??? RelationshipMap.tsx
+
+??? CharacterArc.tsx
+```
+
+---
+
+# Feature: Story Graph
+
+Optional advanced visualization.
+
+Components:
+
+```text
+storyGraph/
+
+
+??? GraphCanvas.tsx
+
+??? Node.tsx
+
+??? RelationshipLine.tsx
+
+??? GraphControls.tsx
+```
+
+---
+
+# Feature: Timeline
+
+Components:
+
+```text
+timeline/
+
+
+??? TimelineView.tsx
+
+??? EventCard.tsx
+
+??? EventDetails.tsx
+
+??? ConflictTracker.tsx
+```
+
+---
+
+# 37. State Management
+
+Hermes requires centralized state.
+
+Recommended:
+
+## Zustand
+
+Purpose:
+
+* lightweight
+* TypeScript friendly
+* excellent Electron compatibility
+
+---
+
+State structure:
+
+```typescript
+interface HermesState {
+
+project: Project;
+
+manuscript: Manuscript;
+
+activeChapter: Chapter;
+
+aiStatus: AIStatus;
+
+settings: Settings;
+
+userPreferences: Preferences;
+
+}
+```
+
+---
+
+# 38. Settings Architecture
+
+Settings are feature flags.
+
+Example:
+
+```text
+Settings
+
+
+General
+
+??? Theme
+
+??? Language
+
+??? Storage Location
+
+
+AI
+
+??? Model Selection
+
+??? Providers
+
+??? Context Settings
+
+
+Writing
+
+??? Editor Mode
+
+??? Suggestions
+
+??? Auto Analysis
+
+
+Advanced
+
+??? Developer Mode
+
+??? Plugins
+
+??? Diagnostics
+```
+
+---
+
+# 39. Feature Toggle System
+
+Important because Hermes has many future capabilities.
+
+Example:
+
+```typescript
+interface FeatureFlags {
+
+storyGraph:boolean;
+
+cloudSync:boolean;
+
+collaboration:boolean;
+
+plugins:boolean;
+
+multiAgent:boolean;
+
+}
+```
+
+---
+
+Default:
+
+```text
+Story Graph:
+
+ON
+
+
+Collaboration:
+
+OFF
+
+
+Plugins:
+
+OFF
+
+
+Multi-Agent:
+
+OFF
+```
+
+---
+
+# 40. Editor Technology Recommendation
+
+Hermes requires a powerful editor.
+
+Recommended:
+
+## TipTap Editor
+
+Based on:
+
+ProseMirror
+
+Advantages:
+
+* extensible
+* collaborative ready
+* React support
+* structured documents
+
+---
+
+Future support:
+
+* comments
+* AI highlights
+* tracked changes
+* publishing formats
+
+---
+
+# 41. UI Component System
+
+Recommended:
+
+## Modern Component Library
+
+Supports:
+
+* accessibility
+* themes
+* reusable components
+
+Components:
+
+```text
+UI Library
+
+
+Buttons
+
+Dialogs
+
+Panels
+
+Tabs
+
+Menus
+
+Cards
+
+Inputs
+
+Command Palette
+```
+
+---
+
+# 42. Command System
+
+Hermes should support keyboard commands.
+
+Example:
+
+```text
+Ctrl + K
+
+Open Hermes Command Menu
+```
+
+Commands:
+
+```text
+Analyze Chapter
+
+Rewrite Scene
+
+Compare Versions
+
+Find Character
+
+Open Timeline
+
+Export Manuscript
+```
+
+---
+
+# 43. Notification System
+
+Hermes communicates background events.
+
+Examples:
+
+```text
+Backup Complete
+
+
+Knowledge Graph Updated
+
+
+AI Analysis Finished
+
+
+New Version Created
+```
+
+---
+
+# 44. Developer Diagnostics
+
+Optional setting:
+
+```text
+Developer Mode
+
+
+Runtime Status
+
+AI Requests
+
+Model Usage
+
+Database Status
+
+Memory Usage
+
+IPC Logs
+```
+
+---
+
+# 45. Frontend Implementation Rules
+
+Development standards:
+
+## Required:
+
+? TypeScript strict mode
+? Modular components
+? Feature-based architecture
+? Reusable UI system
+? Automated testing
+? Clear interfaces
+
+---
+
+# 46. React/Electron Implementation Summary
+
+Final frontend architecture:
+
+```text
+ id="8w4m1q"
+
+Electron
+
+    |
+
+React + TypeScript 7
+
+    |
+
+Feature Modules
+
+    |
+
+Zustand State
+
+    |
+
+IPC Services
+
+    |
+
+Hermes Runtime
+
+```
+
+---
+
+# END OF PART 3
+
+Next section:
+
+# PART 4 — HERMES AGENT ARCHITECTURE
+
+This will define the most important part of the system:
+
+* Hermes brain design
+* agent behavior
+* tool system
+* memory architecture
+* context management
+* model routing
+* local/cloud AI handling
+* future multi-agent expansion
+
+Proceeding next.
+
+

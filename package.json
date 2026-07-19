@@ -1,0 +1,66 @@
+{
+  "name": "hermes-manuscript-studio",
+  "version": "0.1.0",
+  "main": "electron-main.cjs",
+  "private": true,
+  "description": "Hermes AI Manuscript Intelligence Studio — Electron desktop app",
+  "author": "Sheldon",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "electron:dev": "concurrently \"vite\" \"wait-on tcp:5173 && electron .\"",
+    "electron:build": "vite build && electron-builder",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext ts,tsx"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.0",
+    "better-sqlite3": "^11.9.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "sqlite-vec": "^0.1.6-alpha.4",
+    "uuid": "^11.1.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/parser": "^8.31.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "concurrently": "^9.1.2",
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^5.0.0",
+    "esbuild": "^0.28.1",
+    "eslint": "^9.25.0",
+    "typescript": "^7.0.0",
+    "vite": "^6.0.7",
+    "vite-plugin-electron": "^1.1.0",
+    "vite-plugin-electron-renderer": "^1.0.0",
+    "vitest": "^2.1.8",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.hermes.manuscript-studio",
+    "productName": "Hermes Manuscript Studio",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "src/main/**/*",
+      "dist/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
