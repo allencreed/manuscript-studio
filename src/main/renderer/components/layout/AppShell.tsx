@@ -56,9 +56,8 @@ export function AppShell() {
   return (
     <div style={{ height: '100vh', width: '100vw', display: 'flex', fontFamily: 'system-ui, sans-serif', color: '#e6e6e6' }}>
       <div style={{ padding: 16, borderRight: '1px solid #2e2e2e' }}>Project: {activeProject.name}</div>
-      <div style={{ flex: 1, padding: 16 }}>
-        <h2>Editor</h2>
-        <p>Active project loaded: {activeProject.id}</p>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <EditorWorkspace />
       </div>
     </div>
   );

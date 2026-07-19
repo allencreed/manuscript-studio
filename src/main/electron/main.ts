@@ -12,6 +12,24 @@ if (!fs.existsSync(projectsDir)) {
 
 let window = null;
 
+function rendererHtmlPath() {
+  const candidates = [
+    path.join(__dirname, '..', 'dist', 'renderer', 'index.html'),
+    path.join(__dirname, '..', 'dist', 'renderer', 'src', 'main', 'renderer', 'index.html'),
+  ];
+  const found = candidates.find((p) => {
+    try {
+      return fs.existsSync(p);
+    } catch {
+      return false;
+    }
+  });
+  if (!found) {
+    console.error('[hms] Missing renderer HTML in dist/renderer. Run pnpm vite build first.');
+  }
+  return found || candidates[0];
+}
+
 function createWindow() {
   window = new BrowserWindow({
     width: 1280,
@@ -23,7 +41,7 @@ function createWindow() {
     },
   });
 
-  const htmlPath = path.join(__dirname, '..', 'dist', 'renderer', 'src', 'main', 'renderer', 'index.html');
+  const htmlPath = rendererHtmlPath();
   window.loadFile(htmlPath).catch((err) => {
     console.error('[hms] Failed to load HTML:', err);
   });
@@ -43,8 +61,8 @@ app.on('window-all-closed', () => {
 // IPC handlers
 ipcMain.handle('hms:project.list', () => {
   try {
-    const items = fs.readdirSync(projectsDir).filter(f => f.endsWith('.json'));
-    return items.map(f => {
+    const items = fs.readdirSync(projectsDir).filter((f) => f.endsWith('.json'));
+    return items.map((f) => {
       try {
         return JSON.parse(fs.readFileSync(path.join(projectsDir, f), 'utf8'));
       } catch {
@@ -138,8 +156,8 @@ ipcMain.handle('hms:version.list', (_event, payload) => {
   if (!fs.existsSync(versionsDir)) return [];
   try {
     return fs.readdirSync(versionsDir)
-      .filter(f => f.startsWith(`${manuscriptId}-`) && f.endsWith('.json'))
-      .map(f => JSON.parse(fs.readFileSync(path.join(versionsDir, f), 'utf8')))
+      .filter((f) => f.startsWith(`${manuscriptId}-`) && f.endsWith('.json'))
+      .map((f) => JSON.parse(fs.readFileSync(path.join(versionsDir, f), 'utf8')))
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   } catch {
     return [];
@@ -172,8 +190,8 @@ ipcMain.handle('hms:backup.list', (_event, projectId) => {
   if (!fs.existsSync(backupsDir)) return [];
   try {
     return fs.readdirSync(backupsDir)
-      .filter(f => f.endsWith('.zip'))
-      .map(f => ({
+      .filter((f) => f.endsWith('.zip'))
+      .map((f) => ({
         id: f,
         name: f,
         path: path.join(backupsDir, f),
