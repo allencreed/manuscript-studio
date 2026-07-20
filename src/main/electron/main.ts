@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
+const rootDir = path.resolve(__dirname, '..', '..');
+const preloadPath = path.join(rootDir, 'preload-dev.cjs');
 const homeDir = app.getPath('home');
 const dataDir = path.join(homeDir, '.hermes-manuscript-studio');
 const projectsDir = path.join(dataDir, 'projects');
@@ -35,7 +37,7 @@ function createWindow() {
     width: 1280,
     height: 800,
     webPreferences: {
-      preload: path.join(__dirname, 'preload-dev.cjs'),
+      preload: preloadPath,
       contextIsolation: true,
       sandbox: false,
       cache: false,

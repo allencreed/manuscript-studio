@@ -86,12 +86,7 @@ export function DocumentSidebar({
     if (!activeProject || !id || !confirm('Delete this document?')) return;
     setError(null);
     try {
-      await window.hms!.documents.save({
-        projectId: activeProject.id,
-        title: ' ',
-        content: '<p></p>',
-        id,
-      });
+      await window.hms!.documents.save({ projectId: activeProject.id, title: '', content: '' });
       await refresh();
       if (activeDocId === id) onSelect('');
     } catch (e) {
