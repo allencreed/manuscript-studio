@@ -105,6 +105,20 @@ ipcMain.handle('hms:project.delete', (_event, id) => {
   return false;
 });
 
+ipcMain.handle('hms:document.list', (_event, payload) => {
+  const projectId = payload?.projectId || 'default';
+  const docsDir = path.join(projectsDir, projectId, 'documents');
+  if (!fs.existsSync(docsDir)) return [];
+  try {
+    return fs.readdirSync(docsDir)
+      .filter((f) => f.endsWith('.json'))
+      .map((f) => JSON.parse(fs.readFileSync(path.join(docsDir, f), 'utf8')))
+      .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+  } catch {
+    return [];
+  }
+});
+
 ipcMain.handle('hms:document.save', (_event, payload) => {
   const projectId = payload?.projectId || 'default';
   const docsDir = path.join(projectsDir, projectId, 'documents');

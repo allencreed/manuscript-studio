@@ -5,7 +5,7 @@ import Placeholder from '@tiptap/extension-placeholder';
 import Typography from '@tiptap/extension-typography';
 import { useProjectStore } from '../../stores/useProjectStore';
 
-type LocalDoc = { id?: string; title?: string; content?: string };
+type LocalDoc = { id?: string; title?: string; content?: string; updatedAt?: string };
 
 export function EditorWorkspace() {
   const { activeProject } = useProjectStore();
@@ -31,11 +31,13 @@ export function EditorWorkspace() {
     setError(null);
     (async () => {
       try {
-        const doc = (await window.hms!.documents.list({ projectId: activeProject.id })) as LocalDoc[];
-        const current = doc[0];
+        const docs = (await window.hms!.documents.list({ projectId: activeProject.id })) as LocalDoc[];
+        const current = Array.isArray(docs) ? docs[0] : null;
         if (current && !cancelled) {
           setTitle(current.title ?? 'Untitled');
-          editor.commands.setContent((current.content as string) ?? '<p></p>');
+          if (typeof current.content === 'string') {
+            editor.commands.setContent(current.content);
+          }
           setSavedAt(current.updatedAt ?? null);
         }
       } catch (e) {
@@ -60,6 +62,10 @@ export function EditorWorkspace() {
       setError(msg);
     }
   };
+
+  if (!activeProject) {
+    return <div style={{ padding: 24, color: '#e6e6e6' }}>Open a project first.</div>;
+  }
 
   return (
     <main style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#0f0f0f', minWidth: 0 }}>

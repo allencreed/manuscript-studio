@@ -8,6 +8,7 @@ const RpcChannel = {
     delete: 'hms:project.delete',
   },
   document: {
+    list: 'hms:document.list',
     save: 'hms:document.save',
     load: 'hms:document.load',
     import: 'hms:document.import',
@@ -43,6 +44,7 @@ contextBridge.exposeInMainWorld('hms', {
     delete: (id) => ipcRenderer.invoke(RpcChannel.project.delete, id),
   },
   documents: {
+    list: (p) => ipcRenderer.invoke(RpcChannel.document.list, p),
     save: (p) => ipcRenderer.invoke(RpcChannel.document.save, p),
     load: (id) => ipcRenderer.invoke(RpcChannel.document.load, id),
     import: (p) => ipcRenderer.invoke(RpcChannel.document.import, p),

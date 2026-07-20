@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useProjectStore } from '../../stores/useProjectStore';
+import { EditorWorkspace } from '../studio/EditorWorkspace';
 
 export function ProjectGate() {
   const { createProject } = useProjectStore();
