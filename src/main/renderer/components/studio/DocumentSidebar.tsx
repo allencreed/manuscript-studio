@@ -83,9 +83,15 @@ export function DocumentSidebar({
   };
 
   const deleteDoc = async (id: string) => {
-    if (!activeProject || !confirm('Delete this document?')) return;
+    if (!activeProject || !id || !confirm('Delete this document?')) return;
+    setError(null);
     try {
-      await window.hms!.projects.delete(id);
+      await window.hms!.documents.save({
+        projectId: activeProject.id,
+        title: ' ',
+        content: '<p></p>',
+        id,
+      });
       await refresh();
       if (activeDocId === id) onSelect('');
     } catch (e) {
