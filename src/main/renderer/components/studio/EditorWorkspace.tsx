@@ -3,15 +3,22 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import Typography from '@tiptap/extension-typography';
-import { useProjectStore } from '../../stores/useProjectStore';
 
 type LocalDoc = { id?: string; title?: string; content?: string; updatedAt?: string };
 
-export function EditorWorkspace() {
-  const { activeProject } = useProjectStore();
+export function EditorWorkspace({
+  projectId,
+  activeDocId,
+  onDocChange,
+}: {
+  projectId: string;
+  activeDocId: string | null;
+  onDocChange: (id: string | null) => void;
+}) {
   const [title, setTitle] = useState('Untitled');
   const [savedAt, setSavedAt] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [currentDocId, setCurrentDocId] = useState<string | null>(null);
 
   const editor = useEditor({
     extensions: [
@@ -25,53 +32,76 @@ export function EditorWorkspace() {
     },
   });
 
-  useEffect(() => {
-    if (!activeProject || !editor) return;
-    let cancelled = false;
-    setError(null);
-    (async () => {
-      try {
-        const docs = (await window.hms!.documents.list({ projectId: activeProject.id })) as LocalDoc[];
-        const current = Array.isArray(docs) ? docs[0] : null;
-        if (current && !cancelled) {
-          setTitle(current.title ?? 'Untitled');
-          if (typeof current.content === 'string') {
-            editor.commands.setContent(current.content);
-          }
-          setSavedAt(current.updatedAt ?? null);
-        }
-      } catch (e) {
-        if (!cancelled) setError(e instanceof Error ? e.message : String(e));
-      }
-    })();
-    return () => { cancelled = true; };
-  }, [activeProject, editor]);
-
-  const saveDocument = async () => {
-    if (!activeProject || !editor) return;
+  const loadDoc = async (id: string) => {
     setError(null);
     try {
-      await window.hms!.documents.save({
-        projectId: activeProject.id,
-        title,
-        content: editor.getJSON(),
-      });
-      setSavedAt(new Date().toISOString());
+      const doc = (await window.hms!.documents.load({ projectId, manuscriptId: id })) as LocalDoc | null;
+      if (doc) {
+        setCurrentDocId(doc.id ?? null);
+        setTitle(doc.title ?? 'Untitled');
+        if (typeof doc.content === 'string') {
+          editor?.commands.setContent(doc.content);
+        }
+        setSavedAt(doc.updatedAt ?? null);
+        onDocChange(doc.id ?? null);
+      }
     } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      setError(msg);
+      setError(e instanceof Error ? e.message : String(e));
     }
   };
 
-  if (!activeProject) {
-    return <div style={{ padding: 24, color: '#e6e6e6' }}>Open a project first.</div>;
-  }
+  const createNewDoc = async () => {
+    if (!projectId) return;
+    setError(null);
+    try {
+      const doc = await window.hms!.documents.save({
+        projectId,
+        title: title || 'Untitled',
+        content: editor?.getJSON() ?? '<p></p>',
+      });
+      setCurrentDocId(doc.id ?? null);
+      setSavedAt(new Date().toISOString());
+      onDocChange(doc.id ?? null);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    }
+  };
+
+  useEffect(() => {
+    if (!projectId) return;
+    if (activeDocId) {
+      loadDoc(activeDocId);
+    } else {
+      setCurrentDocId(null);
+      setTitle('Untitled');
+      setSavedAt(null);
+      editor?.commands.setContent('<p></p>');
+    }
+  }, [activeDocId, projectId]);
+
+  const saveDocument = async () => {
+    if (!projectId) return;
+    setError(null);
+    try {
+      const doc = await window.hms!.documents.save({
+        projectId,
+        title,
+        content: editor?.getJSON() ?? '<p></p>',
+      });
+      setCurrentDocId(doc.id ?? null);
+      setSavedAt(new Date().toISOString());
+      onDocChange(doc.id ?? null);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    }
+  };
 
   return (
     <main style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#0f0f0f', minWidth: 0 }}>
       <div style={{ padding: '10px 16px', borderBottom: '1px solid #222', display: 'flex', gap: 12, alignItems: 'center' }}>
         <input value={title} onChange={e => setTitle(e.target.value)} style={{ background: 'transparent', border: 'none', color: '#e6e6e6', fontSize: 14, flex: 1 }} />
         <span style={{ fontSize: 12, opacity: 0.5 }}>{savedAt ? `Saved ${new Date(savedAt).toLocaleTimeString()}` : 'Not saved'}</span>
+        <button onClick={createNewDoc} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: 6, cursor: 'pointer' }}>New</button>
         <button onClick={saveDocument} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: 6, cursor: 'pointer' }}>Save</button>
       </div>
       {error && <div style={{ padding: '8px 16px', background: '#3b1515', color: '#ffb4b4' }}>{error}</div>}

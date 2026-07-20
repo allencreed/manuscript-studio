@@ -38,6 +38,7 @@ function createWindow() {
       preload: path.join(__dirname, 'preload-dev.cjs'),
       contextIsolation: true,
       sandbox: false,
+      cache: false,
     },
   });
 
